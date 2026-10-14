@@ -21,6 +21,8 @@ bash gradlew -p versions/1.8 clean build
 bash gradlew -p versions/1.8 runClient
 ```
 
+https://www.youtube.com/watch?v=YhKBLJ4-Pro
+
 The distribution file is `versions/1.8/build/libs/botas-1.8-0.3.0.jar`. Use the normal remapped JAR, not the sources or development JAR.
 
 Botas derives from AltoClef. Original copyright and MIT license notices remain in [LICENSE](LICENSE); internal Java package names retain their original names for compatibility.
