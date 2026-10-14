@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "botas",
+  "version": "${version}",
+  "name": "Botas 1.8",
+  "description": "Minecraft 1.8 automation, resource gathering, travel and experimental tools.",
+  "environment": "client",
+  "license": "MIT",
+  "entrypoints": {
+    "client": [
+      "adris.altoclef.legacy.LegacyBootstrap"
+    ]
+  },
+  "mixins": [
+    "altoclef-legacy.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.2",
+    "minecraft": "1.8",
+    "java": ">=8"
+  },
+  "breaks": {
+    "altoclef_legacy": "*"
+  }
+}

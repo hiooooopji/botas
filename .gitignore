@@ -1,0 +1,25 @@
+# Build outputs and local runtime data
+.gradle/
+**/build/
+**/run*/
+artifacts/
+logs/
+*.log
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.mp4
+*.zip
+*.png
+*.jpg
+# Local tools, credentials and editor configuration
+.agents/
+.aws/
+.codex/
+.idea/
+.vs/
+*.iml
+.env
+.env.*
+__pycache__/
+.DS_Store

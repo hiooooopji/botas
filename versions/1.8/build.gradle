@@ -1,0 +1,60 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'legacy-looming' version '1.7-SNAPSHOT'
+}
+
+group = 'adris.altoclef'
+version = '0.3.0'
+base.archivesName = 'botas-1.8'
+
+repositories {
+    maven { url = 'https://maven.legacyfabric.net/' }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.8'
+    mappings 'net.legacyfabric:yarn:1.8+build.604:v2'
+    modImplementation 'net.fabricmc:fabric-loader:0.16.2'
+}
+
+def sharedEvents = tasks.register('syncSharedEvents', Sync) {
+    from('../../src/main/java') {
+        include 'adris/altoclef/eventbus/EventBus.java'
+        include 'adris/altoclef/eventbus/Subscription.java'
+        include 'adris/altoclef/eventbus/events/ClientTickEvent.java'
+        include 'adris/altoclef/eventbus/events/SendChatEvent.java'
+    }
+    into layout.buildDirectory.dir('generated/sources/sharedEvents')
+}
+sourceSets.main.java.srcDir(sharedEvents)
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 8
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand version: project.version
+    }
+}
+
+loom {
+    runs {
+        client {
+            runDir 'run'
+            programArgs '--userProperties', '{}'
+        }
+    }
+}
+
+tasks.named('jar') {
+    from('../../LICENSE') { rename { 'LICENSE-Botas' } }
+}

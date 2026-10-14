@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "adris.altoclef.legacy.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "ClientTickMixin",
+    "ChatInputMixin",
+    "ShapedRecipeAccessor",
+    "ShapelessRecipeAccessor",
+    "InGameHudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "BucketTraceMixin",
+    "WorldBuildCaptureMixin",
+    "DragonChargeMixin",
+    "ServerTaskMixin",
+    "ZombiePigmanAccessor"
+  ]
+}
